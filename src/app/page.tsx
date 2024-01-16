@@ -1,16 +1,16 @@
 "use client";
 
-import { Grade, GradeScale } from "@/lib/interfaces";
+import { Grade, GradeSystem } from "@/lib/interfaces";
 import { useEffect, useState } from "react";
 
-import Scale513 from "@/lib/gradingScales/513/513";
+import System513 from "@/lib/gradingSystems/513/513";
 import { determineLetterGrade } from "@/lib/helpers";
 
 export default function Home() {
   const [rawGrades, setRawGrades] = useState<string>("");
   const [grades, setGrades] = useState<Grade[]>([]);
   const [average, setAverage] = useState<number | null>(null);
-  const [gradingScale, setGradingScale] = useState<GradeScale>("pts");
+  const [gradingSystem, setGradingSystem] = useState<GradeSystem>("pts");
 
   const handleSubmit = () => {
     const regex = /(\b\d+(\.\d+)?\b) points out of possible (\b\d+\b)/g;
@@ -29,7 +29,7 @@ export default function Home() {
   useEffect(() => {
     if (grades.length === 0) return;
 
-    if (gradingScale === "pts") {
+    if (gradingSystem === "pts") {
       let total: Grade = {
         earned: 0,
         possible: 0,
@@ -43,10 +43,10 @@ export default function Home() {
       console.log(grades);
 
       setAverage(total.earned / total.possible);
-    } else if (gradingScale === "513") {
-      setAverage(Scale513(grades));
+    } else if (gradingSystem === "513") {
+      setAverage(System513(grades));
     }
-  }, [grades, gradingScale]);
+  }, [grades, gradingSystem]);
 
   return (
     <div className="container mx-auto mt-10 p-4">
@@ -66,9 +66,9 @@ export default function Home() {
 
       <select
         className="mt-5 w-full custom-select block p-2 rounded-md border border-gray-300"
-        onChange={(e) => setGradingScale(e.target.value as GradeScale)}
+        onChange={(e) => setGradingSystem(e.target.value as GradeSystem)}
       >
-        <option value="pts">Points Grading System</option>
+        <option value="pts">Total Points</option>
         <option value="513">Freshman Biology 513</option>
       </select>
 

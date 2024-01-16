@@ -8,4 +8,4 @@ export interface LetterGrade {
   percent: number;
 }
 
-export type GradeScale = "pts" | "513";
+export type GradeSystem = "pts" | "513";

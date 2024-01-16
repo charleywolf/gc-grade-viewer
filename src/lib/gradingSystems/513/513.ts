@@ -1,6 +1,6 @@
 import { Grade } from "@/lib/interfaces";
 
-export default function Scale513(grades: Grade[]): number {
+export default function System513(grades: Grade[]): number {
   let testGrade: Grade = {
     earned: 0,
     possible: 0,
