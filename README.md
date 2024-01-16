@@ -1,5 +1,5 @@
 # Google Classroom Grade Viewer
-This web app calculates your current class average by using pasted raw grades from Google Classroom, making the tedious process of adding up your grades much easier.
+This [web app](https://gc-grade-viewer.vercel.app) calculates your current class average by using pasted raw grades from Google Classroom, making the tedious process of adding up your grades much easier.
 
 ## Features
 - Multiple Grading Systems
