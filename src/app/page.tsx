@@ -51,26 +51,30 @@ export default function Home() {
 
   return (
     <div className="container mx-auto mt-10 p-4">
-      <div className="mb-5">
-        <header className="text-4xl font-bold">
-          Google Classroom Grade Calculator
-        </header>
-        <h2 className="text-xl">Optimized for Scarsdale High School Classes</h2>
-      </div>
-
-      {average !== null && (
-        <>
-          <h1 className="text-4xl font-black">
-            {determineLetterGrade(average)}
-          </h1>
-          <h2 className="text-2xl font-bold">
-            {average.toLocaleString(undefined, {
-              style: "percent",
-              minimumFractionDigits: 2,
-            })}
+      <div className="flex justify-between items-center mb-5">
+        <div>
+          <header className="text-xl md:text-2xl lg:text-4xl font-bold">
+            Google Classroom Grade Calculator
+          </header>
+          <h2 className="text-sm md:text-lg">
+            Optimized for Scarsdale High School Classes
           </h2>
-        </>
-      )}
+        </div>
+
+        {average !== null && (
+          <div>
+            <h1 className="text-xl md:text-2xl lg:text-4xl font-black">
+              {determineLetterGrade(average)}
+            </h1>
+            <h2 className="text-lg md:text-xl lg:text-2xl font-bold">
+              {average.toLocaleString(undefined, {
+                style: "percent",
+                minimumFractionDigits: 2,
+              })}
+            </h2>
+          </div>
+        )}
+      </div>
 
       <div className="w-full mt-5">
         <LabelWithInfo href="/help/systems" title="Grading System" />
