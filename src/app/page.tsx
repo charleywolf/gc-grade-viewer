@@ -3,6 +3,7 @@
 import { Grade, GradeSystem } from "@/lib/interfaces";
 import { useEffect, useState } from "react";
 
+import LabelWithInfo from "@/Components/LabelWithInfo";
 import System513 from "@/lib/gradingSystems/513/513";
 import { determineLetterGrade } from "@/lib/helpers";
 
@@ -50,6 +51,13 @@ export default function Home() {
 
   return (
     <div className="container mx-auto mt-10 p-4">
+      <div className="mb-5">
+        <header className="text-4xl font-bold">
+          Google Classroom Grade Calculator
+        </header>
+        <h2 className="text-xl">Optimized for Scarsdale High School Classes</h2>
+      </div>
+
       {average !== null && (
         <>
           <h1 className="text-4xl font-black">
@@ -64,23 +72,29 @@ export default function Home() {
         </>
       )}
 
-      <select
-        className="mt-5 w-full custom-select block p-2 rounded-md border border-gray-300"
-        onChange={(e) => setGradingSystem(e.target.value as GradeSystem)}
-      >
-        <option value="pts">Total Points</option>
-        <option value="513">Freshman Biology 513</option>
-      </select>
+      <div className="w-full mt-5">
+        <LabelWithInfo href="/help/systems" title="Grading System" />
+        <select
+          className="w-full custom-select block p-2 rounded-md border border-gray-300"
+          onChange={(e) => setGradingSystem(e.target.value as GradeSystem)}
+        >
+          <option value="pts">Total Points</option>
+          <option value="513">Freshman Biology 513</option>
+        </select>
+      </div>
 
-      <textarea
-        className="w-full mt-5 h-40 p-2 border border-gray-300 rounded-md resize-none"
-        placeholder="Paste grades from Google Classroom here..."
-        value={rawGrades}
-        onChange={(e) => setRawGrades(e.target.value)}
-      ></textarea>
+      <div className="mt-5 w-full">
+        <LabelWithInfo href="/help/grades" title="Classroom Grades" />
+        <textarea
+          className="w-full h-40 p-2 border border-gray-300 rounded-md resize-none"
+          placeholder="Paste raw grades from Google Classroom here..."
+          value={rawGrades}
+          onChange={(e) => setRawGrades(e.target.value)}
+        ></textarea>
+      </div>
 
       <button
-        className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md"
+        className="mt-4 bg-blue-500 font-semibold text-white px-4 py-2 rounded-md"
         onClick={handleSubmit}
       >
         Calculate Average

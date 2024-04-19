@@ -73,3 +73,7 @@ export function determineLetterGrade(average: number): string {
 
   return "F";
 }
+
+export function classNames(...classes: string[]) {
+  return classes.filter(Boolean).join(" ");
+}
