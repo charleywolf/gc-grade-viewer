@@ -1,5 +1,5 @@
-import HelpColumn from "@/Components/help/HelpColumn";
-import HelpHeader from "@/Components/help/HelpHeader";
+import HelpColumn from "@/components/help/HelpColumn";
+import HelpHeader from "@/components/help/HelpHeader";
 
 export default function system() {
   return (
@@ -17,6 +17,10 @@ export default function system() {
           captionClassname="text-lg"
           title="Biology 513"
         />
+        <HelpColumn captionClassname="h-20" />
+        <HelpColumn captionClassname="h-20" />
+        <HelpColumn captionClassname="h-20" />
+        <HelpColumn captionClassname="h-20" />
       </div>
     </div>
   );

@@ -4,8 +4,8 @@ import { Grade, GradeSystem } from "@/lib/interfaces";
 import { classNames, determineLetterGrade } from "@/lib/helpers";
 import { useEffect, useState } from "react";
 
-import Final from "@/Components/Final";
-import LabelWithInfo from "@/Components/LabelWithInfo";
+import Final from "@/components/Final";
+import LabelWithInfo from "@/components/LabelWithInfo";
 import System513 from "@/lib/gradingSystems/513/513";
 
 export default function Home() {
@@ -51,14 +51,14 @@ export default function Home() {
   }, [grades, gradingSystem]);
 
   return (
-    <div className="container mx-auto mt-10 p-4">
+    <div className="container mx-auto mt-1 lg:mt-5 sm:mt-2 xl:mt-10 p-4">
       <div className="flex justify-between items-center mb-5">
         <div>
-          <header className="text-xl md:text-2xl lg:text-4xl font-bold">
+          <header className="text-2xl lg:text-4xl font-bold">
             Google Classroom Grade Calculator
           </header>
           <h2 className="text-sm md:text-lg">
-            Optimized for Scarsdale High School Classes
+            Created for Scarsdale High School
           </h2>
         </div>
 
@@ -113,6 +113,8 @@ export default function Home() {
       >
         Calculate Average
       </button>
+
+      <hr className="h-px my-12 bg-gray-200 border-0 dark:bg-gray-300" />
 
       <Final average={average} />
     </div>

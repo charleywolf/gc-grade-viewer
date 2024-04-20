@@ -39,10 +39,7 @@ export default function Final({ average }: { average: number | null }) {
 
   return (
     <div>
-      <hr className="h-px my-12 bg-gray-200 border-0 dark:bg-gray-300" />
-      <header className="text-lg md:text-xl lg:text-2xl font-bold">
-        Final Grade
-      </header>
+      <header className="text-xl lg:text-2xl font-bold">Final Grade</header>
 
       <div className="w-full mt-5">
         <LabelWithInfo title="Percentage Worth of Final" />

@@ -1,5 +1,5 @@
-import HelpColumn from "@/Components/help/HelpColumn";
-import HelpHeader from "@/Components/help/HelpHeader";
+import HelpColumn from "@/components/help/HelpColumn";
+import HelpHeader from "@/components/help/HelpHeader";
 
 export default function gradesHelp() {
   return (
