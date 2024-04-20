@@ -1,17 +1,18 @@
 "use client";
 
 import { Grade, GradeSystem } from "@/lib/interfaces";
+import { classNames, determineLetterGrade } from "@/lib/helpers";
 import { useEffect, useState } from "react";
 
+import Final from "@/Components/Final";
 import LabelWithInfo from "@/Components/LabelWithInfo";
 import System513 from "@/lib/gradingSystems/513/513";
-import { determineLetterGrade } from "@/lib/helpers";
 
 export default function Home() {
   const [rawGrades, setRawGrades] = useState<string>("");
   const [grades, setGrades] = useState<Grade[]>([]);
   const [average, setAverage] = useState<number | null>(null);
-  const [gradingSystem, setGradingSystem] = useState<GradeSystem>("pts");
+  const [gradingSystem, setGradingSystem] = useState<GradeSystem | null>(null);
 
   const handleSubmit = () => {
     const regex = /(\b\d+(\.\d+)?\b) points out of possible (\b\d+\b)/g;
@@ -64,7 +65,7 @@ export default function Home() {
         {average !== null && (
           <div>
             <h1 className="text-xl md:text-2xl lg:text-4xl font-black">
-              {determineLetterGrade(average)}
+              {determineLetterGrade(average).letter}
             </h1>
             <h2 className="text-lg md:text-xl lg:text-2xl font-bold">
               {average.toLocaleString(undefined, {
@@ -81,28 +82,39 @@ export default function Home() {
         <select
           className="w-full custom-select block p-2 rounded-md border border-gray-300"
           onChange={(e) => setGradingSystem(e.target.value as GradeSystem)}
+          defaultValue={-1}
         >
+          <option disabled value={-1}>
+            Choose a grading system
+          </option>
           <option value="pts">Total Points</option>
-          <option value="513">Freshman Biology 513</option>
+          <option value="513">Biology 513</option>
         </select>
       </div>
 
-      <div className="mt-5 w-full">
+      <div className="w-full mt-5">
         <LabelWithInfo href="/help/grades" title="Classroom Grades" />
         <textarea
           className="w-full h-40 p-2 border border-gray-300 rounded-md resize-none"
           placeholder="Paste raw grades from Google Classroom here..."
           value={rawGrades}
           onChange={(e) => setRawGrades(e.target.value)}
-        ></textarea>
+        />
       </div>
 
       <button
-        className="mt-4 bg-blue-500 font-semibold text-white px-4 py-2 rounded-md"
+        className={classNames(
+          "mt-4 font-semibold text-white px-4 py-2 rounded-md bg-blue-500",
+          gradingSystem && rawGrades !== ""
+            ? ""
+            : "opacity-50 cursor-not-allowed"
+        )}
         onClick={handleSubmit}
       >
         Calculate Average
       </button>
+
+      <Final average={average} />
     </div>
   );
 }

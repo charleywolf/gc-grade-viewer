@@ -15,7 +15,7 @@ F	0%
 
 import { LetterGrade } from "./interfaces";
 
-const gradingScale: LetterGrade[] = [
+export const gradingScale: LetterGrade[] = [
   {
     letter: "A+",
     percent: 97,
@@ -62,18 +62,62 @@ const gradingScale: LetterGrade[] = [
   },
 ];
 
-export function determineLetterGrade(average: number): string {
+export function determineLetterGrade(average: number): LetterGrade {
   const roundedAverage = Math.round(average * 100);
 
   for (const grade of gradingScale) {
     if (roundedAverage >= grade.percent) {
-      return grade.letter;
+      return grade;
     }
   }
 
-  return "F";
+  return { letter: "F", percent: 0 };
 }
 
-export function classNames(...classes: string[]) {
+export function determineNextLetterGrade(
+  currentGrade: LetterGrade
+): LetterGrade | null {
+  if (currentGrade.letter == "F") {
+    gradingScale[11];
+  }
+
+  // Find the index of the currentGrade in the gradingScale array
+  const currentIndex = gradingScale.findIndex(
+    (grade) => grade.letter === currentGrade.letter
+  );
+
+  // If the currentGrade is not found or it's the first item, return null
+  if (currentIndex === -1 || currentIndex === 0) {
+    return null;
+  }
+
+  return gradingScale[currentIndex - 1];
+}
+
+export function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(" ");
+}
+
+export function isInteger(str: string): boolean {
+  return !isNaN(parseInt(str, 10));
+}
+
+export function roundToHundredth(num: number, percentage: boolean): number {
+  let multiplier = percentage ? 100 : 1;
+  return Math.round(num * 100 * multiplier) / 100 / multiplier;
+}
+
+export function calculateRequiredGrade(
+  a: number,
+  bu: number,
+  cu: number
+): number {
+  // a = average in %
+  // bu = whole number final worth
+  // cu = whole number desired average
+
+  let b = bu / 100;
+  let c = (cu - 0.5) / 100;
+
+  return roundToHundredth((a * b - a + c) / b, true);
 }
