@@ -86,7 +86,7 @@ export default function Final({ average }: { average: number | null }) {
                 })}{" "}
               </span>
               on the final in order to get a(n)
-              <span className="font-bold"> {letterGrade.letter}</span>!{" "}
+              <span className="font-bold"> {desired.letter}</span>!{" "}
               {reqGrade > 1 && "You're cooked."}
             </span>
           </div>
