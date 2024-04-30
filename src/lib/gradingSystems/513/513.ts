@@ -12,7 +12,7 @@ export default function System513(grades: Grade[]): number {
   };
 
   for (const grade of grades) {
-    if (grade.possible > 20) {
+    if (grade.possible > 40) {
       testGrade.earned += grade.earned;
       testGrade.possible += grade.possible;
     } else {
