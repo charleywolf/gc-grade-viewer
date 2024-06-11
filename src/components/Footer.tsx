@@ -1,4 +1,4 @@
-import { ordinal_suffix_of } from "@/lib/formatter";
+import { ordinal_suffix_of } from "@/app/utils/formatter";
 
 export default function Footer({ views }: { views: number }) {
   return (
