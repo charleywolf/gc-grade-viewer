@@ -58,7 +58,7 @@ export default function Home() {
             Google Classroom Grade Calculator
           </header>
           <h2 className="text-sm md:text-lg">
-            Created for Scarsdale High School
+            Created for Scarsdale High School by Charley Wolf
           </h2>
         </div>
 
