@@ -52,22 +52,22 @@ export default function Home() {
 
   return (
     <div className="container mx-auto mt-1 lg:mt-5 sm:mt-2 xl:mt-10 p-4">
-      <div className="flex justify-between items-center mb-5">
+      <div className="sm:flex sm:justify-between items-center mb-5">
         <div>
           <header className="text-2xl lg:text-4xl font-bold">
             Google Classroom Grade Calculator
           </header>
           <h2 className="text-sm md:text-lg">
-            Created for Scarsdale High School
+            Created for Scarsdale High School by Charley Wolf
           </h2>
         </div>
 
         {average !== null && (
-          <div>
-            <h1 className="text-xl md:text-2xl lg:text-4xl font-black">
+          <div className="mt-5 sm:mt-0 flex p-2 flex-col items-center bg-blue-500 text-white rounded-xl">
+            <h1 className="text-4xl md:text-2xl lg:text-4xl font-black">
               {determineLetterGrade(average).letter}
             </h1>
-            <h2 className="text-lg md:text-xl lg:text-2xl font-bold">
+            <h2 className="text-2xl md:text-xl lg:text-2xl font-bold">
               {average.toLocaleString(undefined, {
                 style: "percent",
                 minimumFractionDigits: 2,
