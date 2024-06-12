@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 
 import Final from "@/components/Final";
 import LabelWithInfo from "@/components/LabelWithInfo";
+import Notice from "@/components/Notice";
 import System513 from "@/lib/gradingSystems/513/513";
 
 export default function Home() {
@@ -52,6 +53,7 @@ export default function Home() {
 
   return (
     <div className="container mx-auto mt-1 lg:mt-5 sm:mt-2 xl:mt-10 p-4">
+      <Notice />
       <div className="sm:flex sm:justify-between items-center mb-5">
         <div>
           <header className="text-2xl lg:text-4xl font-bold">
