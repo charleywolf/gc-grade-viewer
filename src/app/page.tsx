@@ -57,10 +57,10 @@ export default function Home() {
       <div className="sm:flex sm:justify-between items-center mb-5">
         <div>
           <header className="text-2xl lg:text-4xl font-bold">
-            Google Classroom Grade Calculator
+            Charley Wolf&apos;s Grade Viewer
           </header>
           <h2 className="text-sm md:text-lg">
-            Created for Scarsdale High School by Charley Wolf
+            Created for Google Classroom at Scarsdale High School
           </h2>
         </div>
 
