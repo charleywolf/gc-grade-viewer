@@ -146,12 +146,13 @@ export default function Grades({
           </div>
         </div>
       </div>
+
       <div className="w-screen relative bg-slate-100 p-5 sm:p-10 mb-16">
         <form
           action={formAction}
           className="flex flex-col justify-center items-center"
         >
-          <div id="modal-container" />
+          <div id="modal-container"></div>
           {/* Title */}
           <h2 className="text-2xl font-semibold mb-10">Grades</h2>
           {/* TABLE */}
