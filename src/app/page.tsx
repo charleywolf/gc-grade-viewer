@@ -53,7 +53,7 @@ export default function Home() {
 
   return (
     <div className="container mx-auto mt-1 lg:mt-5 sm:mt-2 xl:mt-10 p-4">
-      <Notice />
+      {/* <Notice /> */}
       <div className="sm:flex sm:justify-between items-center mb-5">
         <div>
           <header className="text-2xl lg:text-4xl font-bold">

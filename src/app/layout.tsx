@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/react";
 import Footer from "@/components/Footer";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
+import Navbar from "@/components/Navbar";
 import { getViews } from "./utils/getViews";
 
 export const revalidate = 600;
@@ -24,6 +25,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <Navbar />
         {children}
         <Analytics />
         <Footer views={views} />

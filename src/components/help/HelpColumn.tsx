@@ -15,7 +15,7 @@ export default function HelpColumn({
   caption?: string;
 }) {
   return (
-    <div className="flex flex-col justify-center items-center text-white bg-gray-800 rounded-lg">
+    <div className="flex flex-col justify-center items-center text-white bg-slate-800 rounded-lg">
       {title && <h1 className="mt-3 text-xl font-bold mb-1">{title}</h1>}
       {src && alt && (
         <Image

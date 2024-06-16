@@ -9,3 +9,23 @@
   -webkit-appearance: none;
   appearance: none;
 }
+
+.settings-div {
+  @apply flex flex-col items-center p-5 rounded-xl shadow-lg h-fit bg-white;
+}
+
+.settings-label {
+  @apply mb-5 font-bold;
+}
+
+.settings-input {
+  @apply px-3 py-2 rounded-xl border-2 w-64;
+}
+
+.grades-table h2 {
+  @apply py-2 px-4 bg-slate-100 rounded-xl font-semibold;
+}
+
+.grades-item {
+  @apply py-2 px-3 flex rounded-xl bg-white;
+}
