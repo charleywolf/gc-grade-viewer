@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 import { Category } from "@/lib/types";
 import CategoryList from "./CategoryList";
+import clsx from "clsx";
 import { saveSettings } from "../Actions";
 import { useFormState } from "react-dom";
 
@@ -63,9 +64,10 @@ export default function Settings({
       <button
         type="submit"
         disabled={!isDirty}
-        className={`absolute top-2 right-2 sm:top-8 sm:right-8 px-4 py-2 bg-white shadow rounded-xl ${
+        className={clsx(
+          "save-button",
           !isDirty ? "opacity-50 cursor-not-allowed" : "hover:bg-slate-200"
-        }`}
+        )}
       >
         Save
       </button>

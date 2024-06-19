@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
+import clsx from "clsx";
 import { getViews } from "./utils/getViews";
 
 export const revalidate = 600;
@@ -24,7 +25,7 @@ export default async function RootLayout({
   const views = await getViews();
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={clsx(inter.className, "bg-slate-900 text-white")}>
         <Navbar />
         {children}
         <Analytics />

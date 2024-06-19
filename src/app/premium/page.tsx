@@ -20,10 +20,10 @@ export default withPageAuthRequired(
     }
 
     return (
-      <div className="mx-auto mt-1 lg:mt-5 sm:mt-2 xl:mt-10">
+      <div className="outer-div">
         {/* User Banner */}
-        <div className="w-screen bg-slate-100 p-10 mb-16">
-          <div className="flex flex-col text-center sm:flex-row sm:text-left items-center justify-center">
+        <div className="banner mb-8">
+          <div className="user-banner">
             <Image
               className="h-32 w-32 rounded-full sm:mr-10 mb-5 sm:mb-0"
               src={user.user.picture}
@@ -53,7 +53,7 @@ export default withPageAuthRequired(
         />
 
         {/* Settings */}
-        <div className="w-screen relative bg-slate-100 p-5 sm:p-10">
+        <div className="banner relative">
           <Settings categories={grades.categories} name={grades.name} />
         </div>
       </div>

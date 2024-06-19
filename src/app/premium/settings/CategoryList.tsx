@@ -80,7 +80,7 @@ export default function CategoryList({
       <button
         type="button"
         onClick={addCategory}
-        className="w-full flex justify-center items-center shadow bg-slate-100 hover:bg-slate-200 px-3 py-2 rounded-xl text-gray-800"
+        className="w-full flex justify-center items-center shadow shadow-gray-400 bg-slate-100 hover:bg-slate-200 px-3 py-2 rounded-xl text-gray-800"
       >
         <PlusCircleIcon className="h-6 w-6 mr-2" />
         Add Category

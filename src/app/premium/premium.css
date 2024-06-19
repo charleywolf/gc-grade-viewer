@@ -1,0 +1,25 @@
+.outer-div {
+  @apply mx-auto mt-8;
+}
+
+.banner {
+  @apply w-screen bg-slate-700 shadow-lg shadow-gray-800 p-5 sm:p-10;
+}
+
+/* USER BANNER */
+
+.user-banner {
+  @apply flex flex-col sm:flex-row;
+  @apply items-center justify-center;
+  @apply text-center sm:text-left;
+}
+
+.flex-col-center {
+  @apply flex flex-col justify-center items-center;
+}
+
+.save-button {
+  @apply absolute top-2 right-2 sm:top-8 sm:right-8;
+  @apply px-4 py-2 rounded-xl;
+  @apply text-black bg-white shadow-md shadow-gray-500;
+}

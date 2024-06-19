@@ -5,6 +5,7 @@ import { ChangeEvent, Fragment, useEffect, useState } from "react";
 import { MinusCircleIcon, PlusCircleIcon } from "@heroicons/react/24/outline";
 
 import GradeCategory from "./GradeCategory";
+import clsx from "clsx";
 import customGrade from "@/lib/gradingSystems/custom";
 import { determineLetterGrade } from "@/lib/helpers";
 import { saveGrades } from "../Actions";
@@ -125,38 +126,35 @@ export default function Grades({
 
   return (
     <>
-      <div className="w-screen bg-slate-100 p-5 sm:p-10 mb-16">
-        <div className="flex flex-col justify-center items-center">
-          <div className="flex items-center justify-center">
-            <div className="flex flex-col items-center justify-center mr-8 sm:mr-16">
-              <h3>Current Class:</h3>
-              <h2 className="text-3xl text-black font-semibold">{className}</h2>
-            </div>
-            <div className="flex p-2 flex-col items-center bg-blue-500 text-white rounded-xl">
-              <h1 className="text-4xl md:text-2xl lg:text-4xl font-black">
-                {determineLetterGrade(average).letter}
-              </h1>
-              <h2 className="text-2xl md:text-xl lg:text-2xl font-bold">
-                {average.toLocaleString(undefined, {
-                  style: "percent",
-                  minimumFractionDigits: 2,
-                })}
-              </h2>
-            </div>
+      {/* CLASS BANNER */}
+      <div className="banner mb-8">
+        <div className="flex items-center justify-center">
+          <div className="flex-col-center mr-8 sm:mr-16">
+            <span className="mb-1">Current Class:</span>
+            <span className="text-3xl font-semibold">{className}</span>
+          </div>
+          <div className="flex-col-center p-2 bg-blue-500 text-white rounded-xl">
+            <h1 className="text-4xl font-black">
+              {determineLetterGrade(average).letter}
+            </h1>
+            <h2 className="text-2xl font-bold">
+              {average.toLocaleString(undefined, {
+                style: "percent",
+                minimumFractionDigits: 2,
+              })}
+            </h2>
           </div>
         </div>
       </div>
 
-      <div className="w-screen relative bg-slate-100 p-5 sm:p-10 mb-16">
-        <form
-          action={formAction}
-          className="flex flex-col justify-center items-center"
-        >
+      {/* GRADE BANNER */}
+      <div className="banner mb-8 relative">
+        <form action={formAction} className="flex-col-center">
           <div id="modal-container"></div>
           {/* Title */}
           <h2 className="text-2xl font-semibold mb-10">Grades</h2>
           {/* TABLE */}
-          <div className="bg-slate-200 rounded-xl p-3 overflow-x-auto container">
+          <div className="bg-slate-100 shadow-md shadow-gray-500 text-black rounded-xl p-3 overflow-x-auto container">
             <div className="grid grid-cols-10 sm:grid-cols-11 gap-3 grades-table min-w-[1000px]">
               <h2 className="col-span-3">Name</h2>
               <h2 className="col-span-2">Points</h2>
@@ -170,12 +168,12 @@ export default function Grades({
                     <input
                       name={`name-${index}`}
                       defaultValue={grade.name}
-                      className="col-span-3 grades-item"
+                      className="col-span-3 theme-input grades-item"
                     />
-                    <div className="flex rounded-xl bg-white col-span-2 font-semibold">
+                    <div className="flex rounded-xl col-span-2 font-semibold">
                       <input
                         name={`pointsEarned-${index}`}
-                        className="w-[45%] rounded-xl py-2 px-3 text-center"
+                        className="w-[45%] theme-input rounded-xl py-2 px-3 text-center"
                         value={
                           grade.pointsEarned === 0 ? "" : grade.pointsEarned
                         }
@@ -186,7 +184,7 @@ export default function Grades({
                       </span>
                       <input
                         name={`pointsOutOf-${index}`}
-                        className="w-[45%] py-2 px-3 rounded-xl text-center"
+                        className="w-[45%] theme-input py-2 px-3 rounded-xl text-center"
                         value={grade.pointsOutOf === 0 ? "" : grade.pointsOutOf}
                         onChange={(e) => updatePointsOutOf(e, index)}
                       />
@@ -197,7 +195,7 @@ export default function Grades({
                       category={grade.category ?? undefined}
                       updateCategory={updateCategory}
                     />
-                    <p className="grades-item col-span-2 font-semibold relative">
+                    <div className="grades-item shadow shadow-gray-400 col-span-2 font-semibold relative">
                       {/* START OF PERCENTAGE */}
                       {isNaN(percentage) ? (
                         "N/A"
@@ -226,7 +224,7 @@ export default function Grades({
                           className="mx-1 h-7 w-7 rounded-full hover:bg-slate-500"
                         />
                       </div>
-                    </p>
+                    </div>
 
                     <div className="hidden right-0 sm:flex items-center justify-center bg-slate-400 rounded-xl text-white">
                       <PlusCircleIcon
@@ -249,9 +247,10 @@ export default function Grades({
           <button
             type="submit"
             disabled={!isDirty}
-            className={`absolute top-2 right-2 sm:top-8 sm:right-8 px-4 py-2 bg-white shadow rounded-xl ${
+            className={clsx(
+              "save-button",
               !isDirty ? "opacity-50 cursor-not-allowed" : "hover:bg-slate-200"
-            }`}
+            )}
           >
             Save
           </button>

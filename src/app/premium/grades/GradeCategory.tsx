@@ -15,7 +15,7 @@ export default function GradeCategory({
 }) {
   return (
     <Select
-      className="col-span-3 py-2 px-3 flex rounded-xl bg-white"
+      className="col-span-3 py-2 px-3 theme-input flex rounded-xl bg-white appearance-none"
       name={`category-${index}`}
       defaultValue={category}
       onChange={(e) => updateCategory(e, index)}

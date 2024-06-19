@@ -1,15 +1,14 @@
 import {
   calculateRequiredGrade,
   determineLetterGrade,
-  determineNextLetterGrade,
   gradingScale,
   isInteger,
-  roundToHundredth,
 } from "@/lib/helpers";
 import { useEffect, useState } from "react";
 
 import LabelWithInfo from "./LabelWithInfo";
 import { LetterGrade } from "@/lib/interfaces";
+import { Select } from "@headlessui/react";
 
 export default function Final({ average }: { average: number | null }) {
   const [final, setFinal] = useState<number>(0);
@@ -45,7 +44,7 @@ export default function Final({ average }: { average: number | null }) {
         <LabelWithInfo title="Percentage Worth of Final" />
         <div className="flex items-center">
           <input
-            className="w-12 block p-2 rounded-md border border-gray-300"
+            className="w-12 block p-2 rounded-md theme-input text-black"
             placeholder="100"
             value={final != 0 ? final.toString() : ""}
             onChange={(e) => handleFinal(e.target.value)}
@@ -56,10 +55,11 @@ export default function Final({ average }: { average: number | null }) {
       <div className="w-full mt-5">
         <LabelWithInfo title="Desired Grade" />
 
-        <select
-          className="w-full custom-select block p-2 rounded-md border border-gray-300"
+        <Select
+          className={"select"}
           onChange={(e) => setDesired(gradingScale[Number(e.target.value)])}
           defaultValue={-1}
+          aria-label="Desired Grade"
         >
           <option disabled value={-1}>
             Choose your desired grade
@@ -69,7 +69,7 @@ export default function Final({ average }: { average: number | null }) {
               {grade.letter}
             </option>
           ))}
-        </select>
+        </Select>
 
         {letterGrade && reqGrade && desired && average && (
           <div className="mt-5 italic">

@@ -13,11 +13,11 @@ export default function LabelWithInfo({
 
   return (
     <div className="flex items-center mb-2">
-      <label className="block text-gray-700 font-bold">{title}</label>
+      <label className="block text-gray-100 font-bold">{title}</label>
       {href && (
         <Link href={href}>
           <IconHelpCircleFilled
-            className="ml-2 text-gray-700 hover:text-gray-500"
+            className="ml-2 text-gray-400 hover:text-gray-200"
             size={17}
           />
         </Link>
