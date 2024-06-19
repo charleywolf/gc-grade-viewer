@@ -2,6 +2,7 @@ import { getSession, withPageAuthRequired } from "@auth0/nextjs-auth0";
 
 import Grades from "./grades/Grades";
 import Image from "next/image";
+import Loading from "./loading";
 import Settings from "./settings/Settings";
 import { getGrades } from "@/lib/crud";
 import { redirect } from "next/navigation";
@@ -11,7 +12,7 @@ export default withPageAuthRequired(
     const user = await getSession();
     const status = "Free Tier";
 
-    if (!user) return <></>;
+    if (!user) return <Loading />;
 
     const grades = await getGrades(user.user.email);
 
