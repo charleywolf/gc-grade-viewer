@@ -18,5 +18,5 @@ This [web app](https://gc-grade-viewer.vercel.app) calculates your current class
 - Firebase: database
 - Auth0: account management
 
-- ### Visitors
+## Visitors
 As of July 3rd 2024, over 372 users have visited the site to calculate their grades.
