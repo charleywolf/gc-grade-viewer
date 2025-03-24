@@ -2,7 +2,7 @@
 
 import { Category, Grade } from "../types";
 
-type CategoryCalc = {
+export type CategoryCalc = {
   weight: number;
   pointsEarned: number;
   pointsOutOf: number;

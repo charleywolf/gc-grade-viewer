@@ -1,6 +1,8 @@
 export interface Grade {
   earned: number;
   possible: number;
+  name: string;
+  category?: string;
 }
 
 export interface LetterGrade {
@@ -8,4 +10,4 @@ export interface LetterGrade {
   percent: number;
 }
 
-export type GradeSystem = "pts" | "513";
+export type GradeSystem = "pts" | "513" | "custom";

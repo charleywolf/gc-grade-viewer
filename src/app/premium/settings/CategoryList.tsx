@@ -9,30 +9,43 @@ import { triggerFormModal } from "@/components/FormModal";
 
 export default function CategoryList({
   defaultCategories,
+  currentCategoriesA,
+  setCategoriesA,
   setDirty,
 }: {
-  defaultCategories: Category[];
-  setDirty: Dispatch<SetStateAction<boolean>>;
+  defaultCategories?: Category[];
+  currentCategoriesA?: Category[];
+  setCategoriesA?: Dispatch<SetStateAction<Category[]>>;
+  setDirty?: Dispatch<SetStateAction<boolean>>;
 }) {
-  const [currentCategories, setCategories] =
-    useState<Category[]>(defaultCategories);
+  const [currentCategoriesB, setCategoriesB] = useState<Category[]>(
+    defaultCategories ?? []
+  );
+
+  let current = currentCategoriesB;
+  let set = setCategoriesB;
+
+  if (currentCategoriesA !== undefined && setCategoriesA !== undefined) {
+    current = currentCategoriesA;
+    set = setCategoriesA;
+  }
   const categoryNameChange = (
     e: ChangeEvent<HTMLInputElement>,
     ind: number
   ) => {
     const text = e.target.value;
 
-    const updatedCategories = currentCategories.map((category, index) =>
+    const updatedCategories = current.map((category, index) =>
       index === ind ? { ...category, name: text } : category
     );
-    setCategories(updatedCategories);
+    set(updatedCategories);
 
-    setDirty(true);
+    setDirty && setDirty(true);
   };
 
   const addCategory = () => {
-    setCategories([...currentCategories, { name: "", weight: 0 }]);
-    setDirty(true);
+    set([...current, { name: "", weight: 0 }]);
+    setDirty && setDirty(true);
   };
 
   const categoryWeightChange = (
@@ -42,7 +55,7 @@ export default function CategoryList({
     const weight = Number(e.target.value);
 
     if (!Number.isNaN(weight)) {
-      setCategories((prevCategories) => {
+      set((prevCategories) => {
         const totalWeight = prevCategories.reduce(
           (acc, cat, index) => acc + (index === ind ? weight : cat.weight),
           0
@@ -61,13 +74,13 @@ export default function CategoryList({
         return newCategories;
       });
 
-      setDirty(true);
+      setDirty && setDirty(true);
     }
   };
 
   return (
     <div className="w-full">
-      {currentCategories.map((category, index) => (
+      {current.map((category, index) => (
         <CategoryItem
           key={index}
           name={category.name}
