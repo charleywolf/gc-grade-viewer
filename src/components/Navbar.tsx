@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 
 const navigation = [
   { name: "Home", url: "/" },
-  { name: "Account", url: "/premium" },
+  // { name: "Account", url: "/premium" },
 ];
 
 export default function Navbar() {
