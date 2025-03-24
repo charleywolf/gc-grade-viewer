@@ -2,11 +2,13 @@ import { Grade } from "@/lib/interfaces";
 
 export default function System513(grades: Grade[]): number {
   let testGrade: Grade = {
+    name: "Test",
     earned: 0,
     possible: 0,
   };
 
   let labGrade: Grade = {
+    name: "Lab",
     earned: 0,
     possible: 0,
   };

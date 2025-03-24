@@ -17,7 +17,11 @@ export default function system() {
           captionClassname="text-lg"
           title="Biology 513"
         />
-        <HelpColumn captionClassname="h-20" />
+        <HelpColumn
+          caption="Custom allows you to create your own categories with different weights and manually assign them to each grade."
+          title="(NEW!) Custom"
+          captionClassname="text-lg"
+        />
         <HelpColumn captionClassname="h-20" />
         <HelpColumn captionClassname="h-20" />
         <HelpColumn captionClassname="h-20" />
