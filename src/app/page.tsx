@@ -161,10 +161,11 @@ export default function Home() {
       <div className="sm:flex sm:justify-between items-center mb-8">
         <div className="w-full sm:w-max theme-section p-4">
           <h1 className="text-center text-2xl sm:text-left mb-1 sm:text-4xl font-bold">
-            Grade Viewer by <a href="https://staymindful.org">StayMindful</a>
+            Grade Viewer
           </h1>
           <h2 className="text-center text-sm sm:text-left sm:text-lg">
-            Created for Google Classroom at Scarsdale High School
+            Created for Google Classroom at Scarsdale High School by Charley
+            Wolf
           </h2>
         </div>
 
